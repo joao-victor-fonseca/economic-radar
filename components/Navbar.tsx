@@ -6,7 +6,7 @@ import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 const Navbar = () => {
   return (
-    <nav className="fixed z-50 w-full bg-dark-1 shadow-lg px-6 py-4 lg:px-10 flex justify-between items-center">
+    <nav className="flex-between fixed z-50 w-full bg-dark-1 px-6 py-4 lg:px-10">
       <Link href="/" className="flex items-center gap-3">
         <Image
           src="/icons/logo.svg"
@@ -15,7 +15,7 @@ const Navbar = () => {
           alt="Economic Radar logo"
           className="max-sm:w-11"
         />
-        <p className="text-2xl font-extrabold text-white hidden max-sm:block">
+        <p className="text-[26px] font-extrabold text-white max-sm:hidden">
           Economic Radar
         </p>
       </Link>
