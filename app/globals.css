@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,49 +10,8 @@
   box-sizing: border-box;
 }
 
-/* ======== stream css overrides ======== */
-.str-video__call-stats {
-  max-width: 500px;
-  position: relative;
-}
-
-.str-video__speaker-layout__wrapper {
-  max-height: 700px;
-}
-
-.str-video__participant-details {
-  color: white;
-}
-
-.str-video__menu-container {
-  color: white;
-}
-
-.str-video__notification {
-  color: white;
-}
-
-.str-video__participant-list {
-  background-color: #1c1f2e;
-  padding: 10px;
-  border-radius: 10px;
-  color: white;
-  height: 100%;
-}
-
-.str-video__call-controls__button {
-  height: 40px;
-}
-
-.glassmorphism {
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-}
-.glassmorphism2 {
-  background: rgba(18, 17, 17, 0.25);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+.btn {
+  @apply text-white bg-gradient-to-r from-[#00c6ff] to-[#0E78F9] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center;
 }
 
 /* ==== clerk class override ===== */
@@ -78,6 +39,16 @@
   color: white;
 }
 
+.support-text {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.fixed-alert {
+  top: 90px;
+  z-index: 999;
+}
+
 /* =============================== */
 
 @layer utilities {
@@ -87,6 +58,18 @@
 
   .flex-between {
     @apply flex justify-between items-center;
+  }
+
+  .head-text {
+    @apply sm:text-3xl text-xl font-semibold sm:leading-snug;
+  }
+
+  .input {
+    @apply bg-white border border-gray-200 text-dark-3 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2.5 font-normal shadow-card;
+  }
+
+  .textarea {
+    @apply block p-2.5 w-full text-sm text-dark-3 bg-white rounded-lg border border-gray-200 focus:ring-blue-500 focus:border-blue-500 mt-2.5 font-normal shadow-card;
   }
 }
 

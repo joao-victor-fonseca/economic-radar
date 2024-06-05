@@ -18,6 +18,10 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        worksans: ["Work Sans", "sans-serif"],
+        poppins: ["Poppins", "sans-serif"],
+      },
       colors: {
         dark: {
           1: "#1C1F2E",
@@ -53,12 +57,11 @@ const config = {
           to: { height: "0" },
         },
       },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-      },
       backgroundImage: {
         hero: "url('/images/hero-background.png')",
+      },
+      boxShadow: {
+        card: "0px 1px 2px 0px rgba(0, 0, 0, 0.05)",
       },
     },
   },
