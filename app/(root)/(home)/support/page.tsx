@@ -8,7 +8,12 @@ import Image from "next/image";
 
 const Support = () => {
   const formRef = useRef<HTMLFormElement>(null);
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
   const { alert, showAlert, hideAlert } = useAlert();
 
@@ -16,6 +21,12 @@ const Support = () => {
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setFile(e.target.files[0]);
+    }
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -33,6 +44,14 @@ const Support = () => {
       return;
     }
 
+    const formData = new FormData();
+    formData.append("from_name", form.name);
+    formData.append("from_email", form.email);
+    formData.append("message", form.message);
+    if (file) {
+      formData.append("file", file);
+    }
+
     emailjs
       .send(
         serviceId,
@@ -43,6 +62,7 @@ const Support = () => {
           from_email: form.email,
           to_email: "radareconomicoinovalab@gmail.com",
           message: form.message,
+          file: file ? file.name : "",
         },
         publicKey
       )
@@ -58,6 +78,7 @@ const Support = () => {
               email: "",
               message: "",
             });
+            setFile(null);
           }, 3000);
         },
         (error) => {
@@ -124,6 +145,18 @@ const Support = () => {
               onChange={handleChange}
             />
           </label>
+
+          <label className="text-white font-semibold">
+            Add the print with the bug here (optional)
+            <input
+              type="file"
+              name="file"
+              className="input"
+              accept=".pdf, .png, .jpg"
+              onChange={handleFileChange}
+            />
+          </label>
+
           <button type="submit" disabled={loading} className="btn">
             {loading ? "Sending..." : "Send Message"}
           </button>
