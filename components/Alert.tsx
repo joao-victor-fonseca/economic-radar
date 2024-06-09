@@ -1,6 +1,6 @@
 const Alert = ({ type, text }: { type: string; text: string }) => {
   return (
-    <div className="fixed-alert absolute top-0 left-0 right-0 flex justify-center items-center">
+    <div className="fixed-alert absolute flex justify-center items-center">
       <div
         className={`p-2 ${
           type === "danger" ? "bg-red-800" : "bg-blue-800"

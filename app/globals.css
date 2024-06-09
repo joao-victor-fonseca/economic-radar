@@ -65,11 +65,11 @@
   }
 
   .input {
-    @apply bg-white border border-gray-200 text-dark-3 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2.5 font-normal shadow-card;
+    @apply bg-dark-3 border border-dark-2 text-dark-3 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2.5 font-normal shadow-card;
   }
 
   .textarea {
-    @apply block p-2.5 w-full text-sm text-dark-3 bg-white rounded-lg border border-gray-200 focus:ring-blue-500 focus:border-blue-500 mt-2.5 font-normal shadow-card;
+    @apply block p-2.5 w-full text-sm text-dark-3 bg-dark-3 rounded-lg border border-dark-3 focus:ring-blue-500 focus:border-blue-500 mt-2.5 font-normal shadow-card;
   }
 }
 
