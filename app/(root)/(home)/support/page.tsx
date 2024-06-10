@@ -112,7 +112,7 @@ const Support = () => {
             <input
               type="text"
               name="name"
-              className="input"
+              className="input input-text"
               placeholder="John"
               required
               value={form.name}
@@ -125,7 +125,7 @@ const Support = () => {
             <input
               type="email"
               name="email"
-              className="input"
+              className="input input-text"
               placeholder="John@gmail.com"
               required
               value={form.email}
@@ -138,7 +138,7 @@ const Support = () => {
             <textarea
               name="message"
               rows={4}
-              className="textarea"
+              className="textarea textarea-text"
               placeholder="Let me know how I can help you!"
               required
               value={form.message}
@@ -151,7 +151,7 @@ const Support = () => {
             <input
               type="file"
               name="file"
-              className="input"
+              className="input input-text"
               accept=".pdf, .png, .jpg"
               onChange={handleFileChange}
             />

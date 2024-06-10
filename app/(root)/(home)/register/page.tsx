@@ -67,7 +67,7 @@ const Register = () => {
     console.log("Cidades Salvas:", JSON.stringify(cities));
 
     // Mostrar alerta de sucesso
-    showAlert({ text: "Cidade cadastrada com sucesso 😃", type: "success" });
+    showAlert({ text: "City registered successfully 😃", type: "success" });
 
     // Rolar para o topo da página imediatamente
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -98,20 +98,20 @@ const Register = () => {
 
   return (
     <section className="flex flex-col items-center justify-center p-6 text-white">
-      <h1 className="text-3xl font-extrabold mb-6">Cadastro da cidade</h1>
+      <h1 className="text-3xl font-extrabold mb-6">City registration</h1>
       {alert.show && <Alert type={alert.type} text={alert.text} />}
       <form
         onSubmit={handleRegister}
         className="grid grid-cols-2 gap-4 w-full max-w-4xl"
       >
         <div className="col-span-2">
-          <label className="block text-gray-300">Nome da Cidade</label>
+          <label className="block text-gray-300">City name</label>
           <input
             type="text"
             name="city"
             value={formData.city}
             onChange={handleInputChange}
-            placeholder="Digite o nome da cidade"
+            placeholder="Enter the name of the city"
             className="w-full py-3 px-6 bg-dark-3 border border-dark-2 rounded-full focus:outline-none"
           />
         </div>
@@ -138,24 +138,24 @@ const Register = () => {
           />
         </div>
         <div>
-          <label className="block text-gray-300">Prefeito</label>
+          <label className="block text-gray-300">Mayor</label>
           <input
             type="text"
             name="mayor"
             value={formData.mayor}
             onChange={handleInputChange}
-            placeholder="Prefeito"
+            placeholder="Mayor"
             className="w-full py-3 px-6 bg-dark-3 border border-dark-2 rounded-full focus:outline-none"
           />
         </div>
         <div>
-          <label className="block text-gray-300">População</label>
+          <label className="block text-gray-300">Population</label>
           <input
             type="text"
             name="population"
             value={formData.population}
             onChange={handleInputChange}
-            placeholder="População"
+            placeholder="Population"
             className="w-full py-3 px-6 bg-dark-3 border border-dark-2 rounded-full focus:outline-none"
           />
         </div>
@@ -172,88 +172,84 @@ const Register = () => {
         </div>
         <div className="col-span-2">
           <label className="block text-gray-300">
-            Benefícios oferecidos pelo Município
+            Benefits offered by the Municipality
           </label>
           <textarea
             name="benefits"
             value={formData.benefits}
             onChange={handleInputChange}
-            placeholder="Benefícios oferecidos pelo Município"
+            placeholder="Benefits offered by the Municipality"
             className="w-full py-3 px-6 bg-dark-3 border border-dark-2 rounded-lg focus:outline-none"
           />
         </div>
         <div className="col-span-2">
-          <label className="block text-gray-300">Logística Necessária</label>
+          <label className="block text-gray-300">Necessary Logistics</label>
           <textarea
             name="logistics"
             value={formData.logistics}
             onChange={handleInputChange}
-            placeholder="Logística Necessária"
+            placeholder="Necessary Logistics"
             className="w-full py-3 px-6 bg-dark-3 border border-dark-2 rounded-lg focus:outline-none"
           />
         </div>
         <div className="col-span-2">
-          <label className="block text-gray-300">Localização Geográfica</label>
+          <label className="block text-gray-300">Geographic location</label>
           <textarea
             name="location"
             value={formData.location}
             onChange={handleInputChange}
-            placeholder="Localização Geográfica"
+            placeholder="Geographic location"
             className="w-full py-3 px-6 bg-dark-3 border border-dark-2 rounded-lg focus:outline-none"
           />
         </div>
         <div>
-          <label className="block text-gray-300">
-            Lei de Liberdade Econômica
-          </label>
+          <label className="block text-gray-300">Economic Freedom Act</label>
           <select
             name="economicFreedom"
             value={formData.economicFreedom}
             onChange={handleInputChange}
             className="w-full py-3 px-6 bg-dark-3 border border-dark-2 rounded-full focus:outline-none"
           >
-            <option value="">Selecione</option>
-            <option value="sim">Sim</option>
-            <option value="não">Não</option>
+            <option value="">Select</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
           </select>
         </div>
         <div>
-          <label className="block text-gray-300">Ramo de Atuação</label>
+          <label className="block text-gray-300">Area of ​​Activity</label>
           <input
             type="text"
             name="sector"
             value={formData.sector}
             onChange={handleInputChange}
-            placeholder="Ramo de Atuação"
+            placeholder="Area of ​​Activity"
             className="w-full py-3 px-6 bg-dark-3 border border-dark-2 rounded-full focus:outline-none"
           />
         </div>
         <div>
-          <label className="block text-gray-300">
-            Qualificação de funcionário
-          </label>
+          <label className="block text-gray-300">Employee qualification</label>
           <select
             name="qualification"
             value={formData.qualification}
             onChange={handleInputChange}
             className="w-full py-3 px-6 bg-dark-3 border border-dark-2 rounded-full focus:outline-none"
           >
-            <option value="">Selecione</option>
-            <option value="sim">Sim</option>
-            <option value="não">Não</option>
+            <option value="">Select</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
           </select>
         </div>
         <div>
-          <label className="block text-gray-300">Licença Ambiental</label>
+          <label className="block text-gray-300">Environmental license</label>
           <select
             name="environmentalLicense"
             value={formData.environmentalLicense}
             onChange={handleInputChange}
             className="w-full py-3 px-6 bg-dark-3 border border-dark-2 rounded-full focus:outline-none"
           >
-            <option value="">Selecione</option>
-            <option value="sim">Sim</option>
-            <option value="não">Não</option>
+            <option value="">Select</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
           </select>
         </div>
 
@@ -262,7 +258,7 @@ const Register = () => {
             type="submit"
             className="w-full py-3 px-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full focus:outline-none"
           >
-            Cadastrar
+            Register
           </button>
         </div>
       </form>

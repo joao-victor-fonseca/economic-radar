@@ -3,6 +3,8 @@
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { AlertCircle, Search } from "lucide-react";
+import Image from "next/image";
 
 interface CityData {
   city: string;
@@ -11,12 +13,14 @@ interface CityData {
 const Dashboard = () => {
   const [city, setCity] = useState("");
   const [cities, setCities] = useState<CityData[]>([]);
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
     const storedCities = JSON.parse(localStorage.getItem("cities") || "[]");
     console.log("Cidades no Dashboard:", storedCities);
     setCities(storedCities);
+    setLoading(false); // Indica que o carregamento está completo
   }, []);
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
@@ -27,6 +31,19 @@ const Dashboard = () => {
       router.push(`/dashboard/${encodedCity}`);
     }
   };
+
+  if (loading) {
+    return (
+      <div className="flex-1 flex items-center justify-center">
+        <Image
+          src="/icons/loading-circle.svg"
+          alt="Loading..."
+          width={80}
+          height={80}
+        />
+      </div>
+    );
+  }
 
   return (
     <section className="flex-1 flex flex-col items-center justify-center p-6 text-white">
@@ -45,26 +62,13 @@ const Dashboard = () => {
           type="submit"
           className="absolute top-1/2 right-6 transform -translate-y-1/2"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 text-gray-400"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            />
-          </svg>
+          <Search className="h-6 w-6 text-gray-400" />
         </button>
       </form>
 
-      <ul className="w-full max-w-4xl">
-        {cities.length > 0 ? (
-          cities.map((city) => (
+      {cities.length > 0 ? (
+        <ul className="w-full max-w-4xl">
+          {cities.map((city) => (
             <li key={city.city} className="mb-4">
               <Link
                 href={`/dashboard/${encodeURIComponent(city.city)}`}
@@ -73,11 +77,14 @@ const Dashboard = () => {
                 {city.city}
               </Link>
             </li>
-          ))
-        ) : (
-          <li>No city registered.</li>
-        )}
-      </ul>
+          ))}
+        </ul>
+      ) : (
+        <div className="flex items-center justify-center flex-col mt-8">
+          <AlertCircle className="h-16 w-16 text-red-500 mb-4" />
+          No city registered yet
+        </div>
+      )}
     </section>
   );
 };
