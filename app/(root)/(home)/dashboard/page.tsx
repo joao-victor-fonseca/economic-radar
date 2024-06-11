@@ -47,10 +47,10 @@ const Dashboard = () => {
 
   return (
     <section className="flex-1 flex flex-col items-center justify-center p-6 text-white">
-      <h1 className="text-3xl mb-8 font-bold">
+      <h1 className="text-2xl md:text-3xl mb-8 font-bold text-center">
         Enter here which city you want to invest in
       </h1>
-      <form onSubmit={handleSearch} className="relative w-96 mb-8">
+      <form onSubmit={handleSearch} className="relative w-full max-w-md mb-8">
         <input
           type="text"
           value={city}
@@ -72,7 +72,7 @@ const Dashboard = () => {
             <li key={city.city} className="mb-4">
               <Link
                 href={`/dashboard/${encodeURIComponent(city.city)}`}
-                className="block p-4 bg-dark-3 rounded-lg hover:bg-gray-700"
+                className="block p-4 bg-dark-3 rounded-lg hover:bg-gray-700 text-center md:text-left"
               >
                 {city.city}
               </Link>
@@ -82,7 +82,7 @@ const Dashboard = () => {
       ) : (
         <div className="flex items-center justify-center flex-col mt-8">
           <AlertCircle className="h-16 w-16 text-red-500 mb-4" />
-          No city registered yet
+          <p className="text-center">No city registered yet</p>
         </div>
       )}
     </section>

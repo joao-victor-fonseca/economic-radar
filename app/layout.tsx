@@ -27,7 +27,7 @@ export default function RootLayout({
             logoImageUrl: "/icons/logo.svg",
           },
           variables: {
-            colorText: "#fff",
+            colorText: "#C9DDFF",
             colorPrimary: "#0E78F9",
             colorBackground: "#1C1F2E",
             colorInputBackground: "#252A41",
@@ -35,7 +35,9 @@ export default function RootLayout({
           },
         }}
       >
-        <body className={`${inter.className} bg-dark-2`}>{children}</body>
+        <body className={`${inter.className} bg-dark-2`}>
+          <div id="__next">{children}</div>
+        </body>
       </ClerkProvider>
     </html>
   );

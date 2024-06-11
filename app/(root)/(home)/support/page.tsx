@@ -93,21 +93,23 @@ const Support = () => {
   };
 
   return (
-    <section className="flex flex-col lg:flex-row  text-white">
+    <section className="flex flex-col lg:flex-row text-white">
       <div className="lg:w-1/2 p-8">
         {alert.show && <Alert type={alert.type} text={alert.text} />}
-        <p className="support-text">
+        <p className="support-text text-center lg:text-left text-sky-2">
           {`We're here to assist you. Whether you're encountering bugs or have
           inquiries, don't hesitate to reach out.`}
         </p>
-        <h1 className="head-text">Get in touch with us!</h1>
+        <h1 className="head-text text-center lg:text-left">
+          Get in touch with us!
+        </h1>
 
         <form
           ref={formRef}
           className="flex flex-col gap-5 mt-5"
           onSubmit={handleSubmit}
         >
-          <label className=" text-gray-300 font-semibold">
+          <label className="text-sky-1 font-semibold">
             Name
             <input
               type="text"
@@ -120,7 +122,7 @@ const Support = () => {
             />
           </label>
 
-          <label className=" text-gray-300 font-semibold">
+          <label className="text-sky-1 font-semibold">
             Email
             <input
               type="email"
@@ -133,7 +135,7 @@ const Support = () => {
             />
           </label>
 
-          <label className=" text-gray-300 font-semibold">
+          <label className="text-sky-1 font-semibold">
             Your Message
             <textarea
               name="message"
@@ -146,7 +148,7 @@ const Support = () => {
             />
           </label>
 
-          <label className=" text-gray-300 font-semibold">
+          <label className="text-sky-1 font-semibold">
             Add the print with the bug here (optional)
             <input
               type="file"
@@ -170,7 +172,7 @@ const Support = () => {
           layout="responsive"
           width={400}
           height={240}
-          className=""
+          className="max-w-full h-auto"
         />
       </div>
     </section>

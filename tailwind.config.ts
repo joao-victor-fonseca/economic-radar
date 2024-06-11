@@ -31,14 +31,12 @@ const config = {
         },
         blue: {
           1: "#0E78F9",
+          2: "#0C62D0",
         },
         sky: {
           1: "#C9DDFF",
           2: "#ECF0FF",
           3: "#F5FCFF",
-        },
-        orange: {
-          1: "#FF742E",
         },
         purple: {
           1: "#830EF9",

@@ -84,7 +84,7 @@ const CityDetails = () => {
     <section className="flex-1 flex flex-col items-center justify-center p-6 text-white">
       <h1 className="text-3xl mb-8 font-bold">{cityData.city}</h1>
       <div className="bg-dark-1 p-6 rounded-lg shadow-lg w-full max-w-3xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sky-2">
           <Card title="PIB" value={cityData.pib} Icon={BarChart} />
           <Card title="UF" value={cityData.uf} Icon={MapPin} />
           <Card title="Mayor" value={cityData.mayor} Icon={User} />

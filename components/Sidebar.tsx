@@ -31,8 +31,8 @@ const Sidebar = () => {
               <Image
                 src={item.imgUrl}
                 alt={item.label}
-                width={24}
-                height={24}
+                width={20}
+                height={20}
               />
               <p className="text-lg font-semibold max-lg:hidden">
                 {item.label}

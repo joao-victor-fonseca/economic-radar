@@ -102,76 +102,76 @@ const Register = () => {
       {alert.show && <Alert type={alert.type} text={alert.text} />}
       <form
         onSubmit={handleRegister}
-        className="grid grid-cols-2 gap-4 w-full max-w-4xl"
+        className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-4xl"
       >
-        <div className="col-span-2">
-          <label className="block text-gray-300">City name</label>
+        <div className="col-span-1 md:col-span-2">
+          <label className="block text-sky-1">City name</label>
           <input
             type="text"
             name="city"
             value={formData.city}
             onChange={handleInputChange}
             placeholder="Enter the name of the city"
-            className="w-full py-3 px-6 bg-dark-3 border border-dark-2 rounded-full focus:outline-none"
+            className="input input-text"
           />
         </div>
-        <div>
-          <label className="block text-gray-300">PIB</label>
+        <div className="col-span-1">
+          <label className="block text-sky-1">PIB</label>
           <input
             type="text"
             name="pib"
             value={formData.pib}
             onChange={handleInputChange}
             placeholder="PIB"
-            className="w-full py-3 px-6 bg-dark-3 border border-dark-2 rounded-full focus:outline-none"
+            className="input input-text"
           />
         </div>
-        <div>
-          <label className="block text-gray-300">UF</label>
+        <div className="col-span-1">
+          <label className="block text-sky-1">UF</label>
           <input
             type="text"
             name="uf"
             value={formData.uf}
             onChange={handleInputChange}
             placeholder="UF"
-            className="w-full py-3 px-6 bg-dark-3 border border-dark-2 rounded-full focus:outline-none"
+            className="input input-text"
           />
         </div>
-        <div>
-          <label className="block text-gray-300">Mayor</label>
+        <div className="col-span-1">
+          <label className="block text-sky-1">Mayor</label>
           <input
             type="text"
             name="mayor"
             value={formData.mayor}
             onChange={handleInputChange}
             placeholder="Mayor"
-            className="w-full py-3 px-6 bg-dark-3 border border-dark-2 rounded-full focus:outline-none"
+            className="input input-text"
           />
         </div>
-        <div>
-          <label className="block text-gray-300">Population</label>
+        <div className="col-span-1">
+          <label className="block text-sky-1">Population</label>
           <input
             type="text"
             name="population"
             value={formData.population}
             onChange={handleInputChange}
             placeholder="Population"
-            className="w-full py-3 px-6 bg-dark-3 border border-dark-2 rounded-full focus:outline-none"
+            className="input input-text"
           />
         </div>
-        <div className="col-span-2">
-          <label className="block text-gray-300">IDH</label>
+        <div className="col-span-1 md:col-span-2">
+          <label className="block text-sky-1">IDH</label>
           <input
             type="text"
             name="idh"
             value={formData.idh}
             onChange={handleInputChange}
             placeholder="IDH"
-            className="w-full py-3 px-6 bg-dark-3 border border-dark-2 rounded-full focus:outline-none"
+            className="input input-text"
           />
         </div>
-        <div className="col-span-2">
-          <label className="block text-gray-300">
+        <div className="col-span-1 md:col-span-2">
+          <label className="block text-sky-1">
             Benefits offered by the Municipality
           </label>
           <textarea
@@ -179,73 +179,73 @@ const Register = () => {
             value={formData.benefits}
             onChange={handleInputChange}
             placeholder="Benefits offered by the Municipality"
-            className="w-full py-3 px-6 bg-dark-3 border border-dark-2 rounded-lg focus:outline-none"
+            className="textarea textarea-text"
           />
         </div>
-        <div className="col-span-2">
-          <label className="block text-gray-300">Necessary Logistics</label>
+        <div className="col-span-1 md:col-span-2">
+          <label className="block text-sky-1">Necessary Logistics</label>
           <textarea
             name="logistics"
             value={formData.logistics}
             onChange={handleInputChange}
             placeholder="Necessary Logistics"
-            className="w-full py-3 px-6 bg-dark-3 border border-dark-2 rounded-lg focus:outline-none"
+            className="textarea textarea-text"
           />
         </div>
-        <div className="col-span-2">
-          <label className="block text-gray-300">Geographic location</label>
+        <div className="col-span-1 md:col-span-2">
+          <label className="block text-sky-1">Geographic location</label>
           <textarea
             name="location"
             value={formData.location}
             onChange={handleInputChange}
             placeholder="Geographic location"
-            className="w-full py-3 px-6 bg-dark-3 border border-dark-2 rounded-lg focus:outline-none"
+            className="textarea textarea-text"
           />
         </div>
-        <div>
-          <label className="block text-gray-300">Economic Freedom Act</label>
+        <div className="col-span-1">
+          <label className="block text-sky-1">Economic Freedom Act</label>
           <select
             name="economicFreedom"
             value={formData.economicFreedom}
             onChange={handleInputChange}
-            className="w-full py-3 px-6 bg-dark-3 border border-dark-2 rounded-full focus:outline-none"
+            className="input input-text"
           >
             <option value="">Select</option>
             <option value="yes">Yes</option>
             <option value="no">No</option>
           </select>
         </div>
-        <div>
-          <label className="block text-gray-300">Area of ​​Activity</label>
+        <div className="col-span-1">
+          <label className="block text-sky-1">Area of ​​Activity</label>
           <input
             type="text"
             name="sector"
             value={formData.sector}
             onChange={handleInputChange}
             placeholder="Area of ​​Activity"
-            className="w-full py-3 px-6 bg-dark-3 border border-dark-2 rounded-full focus:outline-none"
+            className="input input-text"
           />
         </div>
-        <div>
-          <label className="block text-gray-300">Employee qualification</label>
+        <div className="col-span-1">
+          <label className="block text-sky-1">Employee qualification</label>
           <select
             name="qualification"
             value={formData.qualification}
             onChange={handleInputChange}
-            className="w-full py-3 px-6 bg-dark-3 border border-dark-2 rounded-full focus:outline-none"
+            className="input input-text"
           >
             <option value="">Select</option>
             <option value="yes">Yes</option>
             <option value="no">No</option>
           </select>
         </div>
-        <div>
-          <label className="block text-gray-300">Environmental license</label>
+        <div className="col-span-1">
+          <label className="block text-sky-1">Environmental license</label>
           <select
             name="environmentalLicense"
             value={formData.environmentalLicense}
             onChange={handleInputChange}
-            className="w-full py-3 px-6 bg-dark-3 border border-dark-2 rounded-full focus:outline-none"
+            className="input input-text"
           >
             <option value="">Select</option>
             <option value="yes">Yes</option>
@@ -253,7 +253,7 @@ const Register = () => {
           </select>
         </div>
 
-        <div className="col-span-2">
+        <div className="col-span-1 md:col-span-2">
           <button
             type="submit"
             className="w-full py-3 px-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full focus:outline-none"
@@ -265,5 +265,4 @@ const Register = () => {
     </section>
   );
 };
-
 export default Register;

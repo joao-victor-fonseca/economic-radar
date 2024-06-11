@@ -5,7 +5,7 @@ export const sidebarLinks = [
     imgUrl: "/icons/Home.svg",
   },
   {
-    label: "socioeconomic registration",
+    label: "City registration",
     route: "/register",
     imgUrl: "/icons/add-register.svg",
   },
