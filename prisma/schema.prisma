@@ -1,0 +1,26 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model City {
+  id                   Int      @id @default(autoincrement())
+  city                 String
+  pib                  String
+  uf                   String
+  mayor                String
+  population           String
+  areas                String[]
+  idh                  String
+  benefits             String
+  logistics            String
+  location             String
+  economicFreedom      String
+  sector               String
+  qualification        String
+  environmentalLicense String
+}

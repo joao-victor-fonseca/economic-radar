@@ -16,8 +16,13 @@ import {
   Award,
   AlertCircle,
 } from "lucide-react";
+import axios from "axios";
+import Card from "@/components/Card";
+import Link from "next/link";
+import Image from "next/image";
 
 interface CityData {
+  id: number;
   city: string;
   pib: string;
   uf: string;
@@ -34,48 +39,84 @@ interface CityData {
   environmentalLicense: string;
 }
 
-import Card from "@/components/Card";
-
 const CityDetails = () => {
   const router = useRouter();
   const params = useParams();
-  const cityParam = params?.city;
+  const cityParam = params?.city as string;
   const [cityData, setCityData] = useState<CityData | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (cityParam) {
-      const city = Array.isArray(cityParam) ? cityParam[0] : cityParam;
-      const cities = JSON.parse(localStorage.getItem("cities") || "[]");
-      console.log("Cidades Recuperadas:", cities);
+      const fetchCityData = async () => {
+        try {
+          const response = await axios.get(
+            `/api/cities/${encodeURIComponent(cityParam)}`
+          );
+          if (response.data) {
+            setCityData(response.data);
+          } else {
+            console.log(`City ${decodeURIComponent(cityParam)} not found`);
+            setError(`City ${decodeURIComponent(cityParam)} not found`);
+          }
+        } catch (error) {
+          console.error("Error fetching city data:", error);
+          setError("Error fetching city data");
+        } finally {
+          setLoading(false);
+        }
+      };
 
-      // Encontrar a cidade ignorando maiúsculas e minúsculas
-      const selectedCity = cities.find(
-        (cityItem: CityData) =>
-          cityItem.city.toLowerCase() === decodeURIComponent(city).toLowerCase()
-      );
-      console.log("Cidade Selecionada:", selectedCity);
-      if (selectedCity) {
-        setCityData(selectedCity);
-      } else {
-        console.log(`Cidade ${city} não encontrada`);
-      }
+      fetchCityData();
     } else {
-      console.log("Parâmetro city não encontrado na URL");
+      console.log("City parameter not found in URL");
+      setError("City parameter not found in URL");
+      setLoading(false);
     }
   }, [cityParam]);
+
+  if (loading) {
+    return (
+      <div className="flex-1 flex items-center justify-center">
+        <Image
+          src="/icons/loading-circle.svg"
+          alt="Loading..."
+          width={80}
+          height={80}
+        />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="flex-1 flex flex-col items-center justify-center p-6 text-white">
+        <AlertCircle className="h-16 w-16 text-red-500 mb-4" />
+        <h1 className="text-3xl mb-8 font-bold">{error}</h1>
+        <Link
+          href="/dashboard"
+          className="flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-full"
+        >
+          <ArrowLeftIcon className="h-5 w-5 mr-2" />
+          Return to Dashboard
+        </Link>
+      </section>
+    );
+  }
 
   if (!cityData) {
     return (
       <section className="flex-1 flex flex-col items-center justify-center p-6 text-white">
         <AlertCircle className="h-16 w-16 text-red-500 mb-4" />
         <h1 className="text-3xl mb-8 font-bold">City not found</h1>
-        <button
-          onClick={() => router.push("/dashboard")}
+        <Link
+          href="/dashboard"
           className="flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-full"
         >
           <ArrowLeftIcon className="h-5 w-5 mr-2" />
           Return to Dashboard
-        </button>
+        </Link>
       </section>
     );
   }
@@ -122,16 +163,16 @@ const CityDetails = () => {
             title="Environmental license"
             value={cityData.environmentalLicense}
             Icon={Award}
-          />{" "}
+          />
         </div>
         <div className="mt-8">
-          <button
-            onClick={() => router.push("/dashboard")}
+          <Link
+            href="/dashboard"
             className="flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-full"
           >
             <ArrowLeftIcon className="h-5 w-5 mr-2" />
             Return to Dashboard
-          </button>
+          </Link>
         </div>
       </div>
     </section>

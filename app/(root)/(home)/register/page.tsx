@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState, ChangeEvent, FormEvent } from "react";
-import useAlert from "@/hooks/useAlert"; // Certifique-se de que o caminho está correto
+import useAlert from "@/hooks/useAlert";
 import Alert from "@/components/Alert";
+import axios from "axios";
 
 interface FormData {
   city: string;
@@ -57,22 +58,19 @@ const Register = () => {
     }));
   };
 
-  const handleRegister = (e: FormEvent<HTMLFormElement>) => {
+  const handleRegister = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    try {
+      const response = await axios.post("/api/register", formData);
+      if (response.status === 201) {
+        showAlert({ text: "City registered successfully 😃", type: "success" });
+      }
+    } catch (error) {
+      showAlert({ text: "Error registering city 😞", type: "danger" });
+    }
 
-    // Salvar a cidade no localStorage
-    const cities = JSON.parse(localStorage.getItem("cities") || "[]");
-    cities.push(formData);
-    localStorage.setItem("cities", JSON.stringify(cities));
-    console.log("Cidades Salvas:", JSON.stringify(cities));
-
-    // Mostrar alerta de sucesso
-    showAlert({ text: "City registered successfully 😃", type: "success" });
-
-    // Rolar para o topo da página imediatamente
     window.scrollTo({ top: 0, behavior: "smooth" });
 
-    // Limpar formulário após cadastro
     setFormData({
       city: "",
       pib: "",
@@ -90,7 +88,6 @@ const Register = () => {
       environmentalLicense: "",
     });
 
-    // Ocultar alerta após 3 segundos
     setTimeout(() => {
       hideAlert();
     }, 3000);
@@ -203,56 +200,49 @@ const Register = () => {
           />
         </div>
         <div className="col-span-1">
-          <label className="block text-sky-1">Economic Freedom Act</label>
-          <select
+          <label className="block text-sky-1">Economic Freedom</label>
+          <input
+            type="text"
             name="economicFreedom"
             value={formData.economicFreedom}
             onChange={handleInputChange}
+            placeholder="Economic Freedom"
             className="input input-text"
-          >
-            <option value="">Select</option>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-          </select>
+          />
         </div>
         <div className="col-span-1">
-          <label className="block text-sky-1">Area of ​​Activity</label>
+          <label className="block text-sky-1">Sector</label>
           <input
             type="text"
             name="sector"
             value={formData.sector}
             onChange={handleInputChange}
-            placeholder="Area of ​​Activity"
+            placeholder="Sector"
             className="input input-text"
           />
         </div>
         <div className="col-span-1">
-          <label className="block text-sky-1">Employee qualification</label>
-          <select
+          <label className="block text-sky-1">Qualification</label>
+          <input
+            type="text"
             name="qualification"
             value={formData.qualification}
             onChange={handleInputChange}
+            placeholder="Qualification"
             className="input input-text"
-          >
-            <option value="">Select</option>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-          </select>
+          />
         </div>
         <div className="col-span-1">
-          <label className="block text-sky-1">Environmental license</label>
-          <select
+          <label className="block text-sky-1">Environmental License</label>
+          <input
+            type="text"
             name="environmentalLicense"
             value={formData.environmentalLicense}
             onChange={handleInputChange}
+            placeholder="Environmental License"
             className="input input-text"
-          >
-            <option value="">Select</option>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-          </select>
+          />
         </div>
-
         <div className="col-span-1 md:col-span-2">
           <button
             type="submit"
@@ -265,4 +255,5 @@ const Register = () => {
     </section>
   );
 };
+
 export default Register;
