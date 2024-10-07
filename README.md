@@ -1,60 +1,89 @@
-<h1 align="center" style="color:white;" > Economic Radar </h1>
+<h1 align="center" style="color:white;" >🚀 Economic Radar 🚀</h1>
 
 <div align="center">
-    <img src="https://img.shields.io/badge/-TypeScript-black?style=for-the-badge&logoColor=white&logo=typescript&color=3178C6" alt="typescript" />
-    <img src="https://img.shields.io/badge/-Next_JS-black?style=for-the-badge&logoColor=white&logo=nextdotjs&color=A020F0" alt="nextdotjs" />
-    <img src="https://img.shields.io/badge/-Tailwind_CSS-black?style=for-the-badge&logoColor=white&logo=tailwindcss&color=06B6D4" alt="tailwindcss" />
-    <img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white" alt="docker" />
-    <img src="https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white" alt="postgres" />
-    <img src="https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white" alt="prisma" />
+    <img src="https://img.shields.io/badge/-TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+    <img src="https://img.shields.io/badge/-Next.js-A020F0?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js" />
+    <img src="https://img.shields.io/badge/-Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" />
+    <img src="https://img.shields.io/badge/-Docker-0db7ed?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" />
+    <img src="https://img.shields.io/badge/-PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL" />
+    <img src="https://img.shields.io/badge/-Prisma-3982CE?style=for-the-badge&logo=prisma&logoColor=white" alt="Prisma" />
 </div>
 
-## 📋 <a name="table">Table of Contents</a>
+---
 
-2. ⚙️ [Tech Stack](#tech-stack)
-3. 🤸 [Quick Start](#quick-start)
+## 📋 Table of Contents
+
+1. [⚙️ Tech Stack](#tech-stack)
+2. [🤸 Quick Start](#quick-start)
+3. [🐳 Docker Setup](#docker-setup)
+
+---
 
 ## <a name="tech-stack">⚙️ Tech Stack</a>
 
-- Next.js
-- TypeScript
-- Tailwind CSS
-- Docker
-- Postgres
-- Prisma
+- **Next.js** - Server-side rendering and static generation
+- **TypeScript** - Typed JavaScript for better code quality
+- **Tailwind CSS** - Utility-first CSS framework
+- **Docker** - Containerized environments
+- **PostgreSQL** - Relational database management system
+- **Prisma** - Next-generation ORM
+
+---
 
 ## <a name="quick-start">🤸 Quick Start</a>
 
 Follow these steps to set up the project locally on your machine.
 
-**Prerequisites**
+### Prerequisites
 
 Make sure you have the following installed on your machine:
 
 - [Git](https://git-scm.com/)
 - [Node.js](https://nodejs.org/en)
-- [npm](https://www.npmjs.com/) (Node Package Manager)
+- [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com/)
 - [Docker](https://www.docker.com/)
 
-**Cloning the Repository**
+### Cloning the Repository
 
 ```bash
 git clone https://github.com/joao-victor-fonseca/economic-radar.git
 cd economic-radar
 ```
 
-**Installation**
+Open http://localhost:3000 in your browser to view the project.
 
-Install the project dependencies using npm:
+## <a name="docker-setup">🐳 Docker Setup</a>
+
+To run the project using Docker, follow these steps:
+
+### Build the Docker containers:
+
+Run the following command to build the containers defined in the `docker-compose.yml` file:
 
 ```bash
-npm install
+docker-compose up --build
 ```
 
-**Running the Project**
+### Access the application:
+
+Once the build is complete, the application will be accessible at [http://localhost:3000](http://localhost:3000).
+
+### Stop the containers:
+
+To stop the Docker containers, run the following command:
 
 ```bash
-npm run dev
+docker-compose down
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser to view the project.
+### Database migrations:
+
+After the containers are running, you may need to run Prisma migrations with the following command:
+
+```bash
+npx prisma migrate dev
+```
+
+## 🎉 Done!
+
+That's it! The project should now be running locally with Docker.
