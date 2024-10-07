@@ -1,5 +1,5 @@
-# Use the official Node.js image as the base image
-FROM node:16
+# Use the official Node.js image as the base image (versão mais recente recomendada)
+FROM node:18-alpine
 
 # Set the working directory
 WORKDIR /app
@@ -7,8 +7,8 @@ WORKDIR /app
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
-# Install dependencies
-RUN npm install
+# Install dependencies (com foco em produção)
+RUN npm install --production
 
 # Copy the rest of the application code to the working directory
 COPY . .
