@@ -1,0 +1,44 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "src": "/city/(.*)",
+      "dest": "/city/$1",
+      "status": 200
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/old-route",
+      "destination": "/new-route"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/old-url",
+      "destination": "/new-url",
+      "statusCode": 301
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
+}
