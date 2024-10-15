@@ -29,6 +29,7 @@ export default async function handler(
 
     res.status(200).json(cityData);
   } catch (error) {
+    console.error("Erro ao buscar a cidade:", error); // Log do erro
     res
       .status(500)
       .json({ error: "An error occurred while fetching the city data" });
