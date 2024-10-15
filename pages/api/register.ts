@@ -8,14 +8,28 @@ export default async function handler(
   if (req.method === "POST") {
     const data = req.body;
 
+    // Verifique se os campos necessários estão presentes
+    if (
+      !data.city ||
+      !data.pib ||
+      !data.uf ||
+      !data.mayor ||
+      !data.population
+    ) {
+      return res
+        .status(400)
+        .json({ error: "Todos os campos são obrigatórios." });
+    }
+
+    // Normalize o nome da cidade
     data.city = data.city.trim().toLowerCase();
 
     try {
       const city = await prisma.city.create({ data });
       res.status(201).json(city);
     } catch (error) {
-      console.error("Erro ao salvar a cidade:", error); // Log do erro
-      res.status(500).json({ error: "Erro ao salvar a cidade" });
+      console.error("Erro ao salvar a cidade:", error);
+      res.status(500).json({ error: "Erro ao salvar a cidade." });
     }
   } else {
     res.setHeader("Allow", ["POST"]);
