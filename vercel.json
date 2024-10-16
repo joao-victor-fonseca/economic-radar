@@ -6,9 +6,6 @@
       "destination": "/api/$1"
     }
   ],
-  "env": {
-    "DATABASE_URL": "@your-database-url"
-  },
   "redirects": [
     {
       "source": "/old-url",
