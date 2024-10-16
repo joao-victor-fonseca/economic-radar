@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "prisma generate"
+    "postinstall": "npx prisma generate"
   },
   "dependencies": {
     "@clerk/nextjs": "^5.7.1",
@@ -38,6 +38,7 @@
     "ws": "^8.18.0"
   },
   "devDependencies": {
+    "@prisma/client": "^5.20.0",
     "@types/dotenv": "^6.1.1",
     "@types/node": "22.7.5",
     "@types/pg": "^8.11.10",
