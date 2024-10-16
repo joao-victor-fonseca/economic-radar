@@ -13,11 +13,6 @@
 /.next/
 /out/
 
-# production
-/build
-.prisma/
-
-
 # misc
 .DS_Store
 *.pem
@@ -31,4 +26,3 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-.vercel
