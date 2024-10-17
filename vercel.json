@@ -25,7 +25,7 @@
     },
     {
       "source": "/dashboard/:city",
-      "destination": "/app/(root)/(home)/dashboard/[city]/page.tsx"
+      "destination": "/app/(root)/(home)/dashboard/:city"
     }
   ]
 }
