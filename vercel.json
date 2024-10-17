@@ -2,30 +2,18 @@
   "version": 2,
   "builds": [
     {
-      "src": "app/(root)/(home)/register/page.tsx",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "app/(root)/(home)/dashboard/page.tsx",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "app/(root)/(home)/dashboard/[city]/page.tsx",
+      "src": "app/(root)/(home)/**",
       "use": "@vercel/node"
     }
   ],
   "rewrites": [
     {
-      "source": "/api/register",
-      "destination": "/api/register"
+      "source": "/api/:path*",
+      "destination": "/api/:path*"
     },
     {
-      "source": "/api/cities",
-      "destination": "/api/cities"
-    },
-    {
-      "source": "/dashboard/:city",
-      "destination": "/app/(root)/(home)/dashboard/:city"
+      "source": "/:path*",
+      "destination": "/app/(root)/(home)/:path*"
     }
   ]
 }
