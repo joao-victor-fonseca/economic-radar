@@ -1,19 +1,20 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "app/(root)/(home)/**",
-      "use": "@vercel/node"
-    }
-  ],
   "rewrites": [
     {
-      "source": "/api/:path*",
-      "destination": "/api/:path*"
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
     },
     {
-      "source": "/dashboard/:city",
-      "destination": "/app/(root)/(home)/dashboard/:city/page.tsx"
+      "source": "/(.*)",
+      "destination": "/app/$1"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/old-url",
+      "destination": "/new-url",
+      "statusCode": 301
     }
   ]
 }
