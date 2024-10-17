@@ -1,27 +1,31 @@
 {
   "version": 2,
+  "builds": [
+    {
+      "src": "app/(root)/(home)/register/page.tsx",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "app/(root)/(home)/dashboard/page.tsx",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "app/(root)/(home)/dashboard/[city]/page.tsx",
+      "use": "@vercel/node"
+    }
+  ],
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
-    }
-  ],
-  "redirects": [
+      "source": "/api/register",
+      "destination": "/api/register"
+    },
     {
-      "source": "/old-url",
-      "destination": "/new-url",
-      "statusCode": 301
-    }
-  ],
-  "headers": [
+      "source": "/api/cities",
+      "destination": "/api/cities"
+    },
     {
-      "source": "/api/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600, s-maxage=3600, stale-while-revalidate"
-        }
-      ]
+      "source": "/dashboard/:city",
+      "destination": "/app/(root)/(home)/dashboard/[city]/page.tsx"
     }
   ]
 }
