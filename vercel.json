@@ -12,8 +12,8 @@
       "destination": "/api/:path*"
     },
     {
-      "source": "/:path*",
-      "destination": "/app/(root)/(home)/:path*"
+      "source": "/dashboard/:city",
+      "destination": "/app/(root)/(home)/dashboard/:city/page.tsx"
     }
   ]
 }
