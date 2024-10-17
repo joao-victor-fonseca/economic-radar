@@ -15,6 +15,7 @@ import {
 } from "chart.js";
 import Image from "next/image";
 import { AlertCircle } from "lucide-react";
+import prisma from "@/lib/prisma"; // Certifique-se de que o prisma está configurado corretamente
 
 ChartJS.register(
   CategoryScale,
@@ -39,10 +40,11 @@ const Dashboard = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [loading, setLoading] = useState(true);
 
+  // Buscar os dados diretamente no cliente
   useEffect(() => {
     const fetchCities = async () => {
       try {
-        const response = await axios.get("/api/cities");
+        const response = await axios.get("/api/cities"); // Aqui você pode alterar para o seu endpoint correto
         setCities(response.data);
         setFilteredCities(response.data);
       } catch (error) {
