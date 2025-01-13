@@ -15,7 +15,7 @@ import {
 } from "chart.js";
 import Image from "next/image";
 import { AlertCircle } from "lucide-react";
-import prisma from "@/lib/prisma"; // Certifique-se de que o prisma está configurado corretamente
+import prisma from "@/lib/prisma";
 
 ChartJS.register(
   CategoryScale,
