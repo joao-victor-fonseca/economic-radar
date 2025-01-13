@@ -7,83 +7,108 @@
     <img src="https://img.shields.io/badge/-Docker-0db7ed?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" />
     <img src="https://img.shields.io/badge/-PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL" />
     <img src="https://img.shields.io/badge/-Prisma-3982CE?style=for-the-badge&logo=prisma&logoColor=white" alt="Prisma" />
+    <img src="https://img.shields.io/badge/-Jest-15b4f1?style=for-the-badge&logo=jest&logoColor=white" alt="Jest" />
 </div>
 
 ---
 
-## 📋 Table of Contents
+## 📋 Índice
 
-1. [⚙️ Tech Stack](#tech-stack)
-2. [🤸 Quick Start](#quick-start)
-3. [🐳 Docker Setup](#docker-setup)
-
----
-
-## <a name="tech-stack">⚙️ Tech Stack</a>
-
-- **Next.js** - Server-side rendering and static generation
-- **TypeScript** - Typed JavaScript for better code quality
-- **Tailwind CSS** - Utility-first CSS framework
-- **Docker** - Containerized environments
-- **PostgreSQL** - Relational database management system
-- **Prisma** - Next-generation ORM
+1. [⚙️ Stack de Tecnologias](#tech-stack)
+2. [🤸 Início Rápido](#quick-start)
+3. [🐳 Configuração com Docker](#docker-setup)
+4. [🧪 Testes Unitários](#unit-tests)
 
 ---
 
-## <a name="quick-start">🤸 Quick Start</a>
+## <a name="tech-stack">⚙️ Stack de Tecnologias</a>
 
-Follow these steps to set up the project locally on your machine.
+- **Next.js** - Renderização no lado do servidor e geração de páginas estáticas
+- **TypeScript** - JavaScript tipado para melhor qualidade de código
+- **Tailwind CSS** - Framework CSS utilitário
+- **Docker** - Ambientes containerizados
+- **PostgreSQL** - Sistema de gerenciamento de banco de dados relacional
+- **Prisma** - ORM de próxima geração
+- **Jest** - Framework de testes JavaScript para garantir a qualidade do código
 
-### Prerequisites
+---
 
-Make sure you have the following installed on your machine:
+## <a name="quick-start">🤸 Início Rápido</a>
+
+Siga estas etapas para configurar o projeto localmente em sua máquina.
+
+### Pré-requisitos
+
+Certifique-se de que os seguintes itens estejam instalados em sua máquina:
 
 - [Git](https://git-scm.com/)
 - [Node.js](https://nodejs.org/en)
 - [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com/)
 - [Docker](https://www.docker.com/)
 
-### Cloning the Repository
+### Clonando o Repositório
 
 ```bash
 git clone https://github.com/joao-victor-fonseca/economic-radar.git
 cd economic-radar
+
 ```
 
-Open http://localhost:3000 in your browser to view the project.
+## <a name="docker-setup">🐳 Configuração com Docker</a>
 
-## <a name="docker-setup">🐳 Docker Setup</a>
+Para rodar o projeto utilizando o Docker, siga as etapas abaixo:
 
-To run the project using Docker, follow these steps:
-
-### Build the Docker containers:
-
-Run the following command to build the containers defined in the `docker-compose.yml` file:
+### Construir os containers do Docker:
+Execute o seguinte comando para construir os containers definidos no arquivo `docker-compose.yml`:
 
 ```bash
 docker-compose up --build
 ```
 
-### Access the application:
+### Acesse o aplicativo:
 
-Once the build is complete, the application will be accessible at [http://localhost:3000](http://localhost:3000).
+Assim que a compilação for concluída, o aplicativo estará acessível em [http://localhost:3000](http://localhost:3000).
 
-### Stop the containers:
+### Pare os contêineres:
 
-To stop the Docker containers, run the following command:
+Para interromper os contêineres do Docker, execute o seguinte comando:
 
 ```bash
 docker-compose down
 ```
 
-### Database migrations:
 
-After the containers are running, you may need to run Prisma migrations with the following command:
+### Migrações de banco de dados:
+
+Depois que os contêineres estiverem em execução, pode ser necessário executar migrações do Prisma com o seguinte comando:
 
 ```bash
 npx prisma migrate dev
 ```
 
-## 🎉 Done!
+## 🎉 Pronto!
 
-That's it! The project should now be running locally with Docker.
+É isso! O projeto agora deve estar sendo executado localmente com Docker.
+
+## <a name="unit-tests">🧪 Testes Unitários</a>
+
+Este projeto está configurado para rodar testes unitários utilizando o framework Jest, que garante a qualidade do código e a robustez da aplicação. Os testes são executados para validar o comportamento de várias partes do sistema, garantindo que as funcionalidades estão funcionando corretamente e que possíveis erros sejam detectados durante o desenvolvimento.
+
+Executando os Testes
+Para rodar os testes unitários, basta usar o seguinte comando:
+
+
+```bash
+npm run test
+```
+
+### Exemplo de Testes
+
+Os testes são organizados para cobrir funcionalidades críticas do sistema, como:
+
+- **Criação de cidades através da API**: Testa se a API consegue criar uma nova cidade e retornar os dados corretos.
+- **Verificação de erros no processo de criação**: Testa se erros são corretamente retornados, como quando o Prisma falha ao tentar salvar no banco de dados.
+- **Validação de respostas para métodos HTTP não permitidos**: Testa se a API retorna o status de erro apropriado quando um método HTTP não permitido (como `GET` em uma rota que só permite `POST`) é chamado.
+
+Os testes são realizados com **mocks** para garantir que as dependências externas (como o banco de dados) não sejam necessárias durante a execução dos testes. Isso permite simular o comportamento da API sem precisar interagir com uma base de dados real.
+
