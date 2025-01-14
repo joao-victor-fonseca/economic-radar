@@ -102,13 +102,24 @@ Para rodar os testes unitários, basta usar o seguinte comando:
 npm run test
 ```
 
-### Exemplo de Testes
+## Exemplo de Testes
 
 Os testes são organizados para cobrir funcionalidades críticas do sistema, como:
 
 - **Criação de cidades através da API**: Testa se a API consegue criar uma nova cidade e retornar os dados corretos.
 - **Verificação de erros no processo de criação**: Testa se erros são corretamente retornados, como quando o Prisma falha ao tentar salvar no banco de dados.
 - **Validação de respostas para métodos HTTP não permitidos**: Testa se a API retorna o status de erro apropriado quando um método HTTP não permitido (como `GET` em uma rota que só permite `POST`) é chamado.
+- **Verificação de respostas para cidade não encontrada**: Testa se a API retorna o código `404` corretamente quando a cidade solicitada não é encontrada no banco de dados.
+- **Simulação de falhas internas**: Testa se a API retorna o código de erro `500` em caso de falha ao tentar acessar ou processar dados da cidade.
 
-Os testes são realizados com **mocks** para garantir que as dependências externas (como o banco de dados) não sejam necessárias durante a execução dos testes. Isso permite simular o comportamento da API sem precisar interagir com uma base de dados real.
+### Mocks e Simulações
+
+Os testes são realizados com **mocks** para garantir que as dependências externas, como o banco de dados, não sejam necessárias durante a execução dos testes. Isso permite simular o comportamento da API sem precisar interagir com uma base de dados real.
+
+### Como Funciona
+
+- Utilizamos o **Jest** para os testes unitários e de integração.
+- **Mocks do Prisma**: Simulamos chamadas ao banco de dados com mocks do Prisma para evitar interações com o banco real.
+- **Cobertura de testes**: A cobertura de testes é aplicada a todas as rotas principais da API, garantindo que os comportamentos críticos do sistema sejam validados corretamente.
+
 
