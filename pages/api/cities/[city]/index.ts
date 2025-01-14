@@ -1,7 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import prisma from "@/lib/prisma";
 
 export default async function handler(
   req: NextApiRequest,
@@ -10,28 +8,22 @@ export default async function handler(
   const { city } = req.query;
 
   if (typeof city !== "string") {
-    res.status(400).json({ error: "Invalid city parameter" });
-    return;
+    return res.status(400).json({ error: "Invalid city parameter" });
   }
 
   try {
-    const cityName = decodeURIComponent(
-      city.replace(/-/g, " ").trim().toLowerCase()
-    );
     const cityData = await prisma.city.findFirst({
-      where: { city: cityName },
+      where: { city },
     });
 
     if (!cityData) {
-      res.status(404).json({ error: "City not found" });
-      return;
+      return res.status(404).json({ error: "City not found" });
     }
 
-    res.status(200).json(cityData);
+    return res.status(200).json(cityData);
   } catch (error) {
-    console.error("Erro ao buscar a cidade:", error); // Log do erro
-    res
-      .status(500)
-      .json({ error: "An error occurred while fetching the city data" });
+    return res.status(500).json({
+      error: "An error occurred while fetching the city data",
+    });
   }
 }
