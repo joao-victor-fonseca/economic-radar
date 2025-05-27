@@ -16,8 +16,7 @@
 
 1. [⚙️ Stack de Tecnologias](#tech-stack)
 2. [🤸 Início Rápido](#quick-start)
-3. [🐳 Configuração com Docker](#docker-setup)
-4. [🧪 Testes Unitários](#unit-tests)
+3. [🧪 Testes Unitários](#unit-tests)
 
 ---
 
@@ -53,30 +52,6 @@ git clone https://github.com/joao-victor-fonseca/economic-radar.git
 cd economic-radar
 
 ```
-
-## <a name="docker-setup">🐳 Configuração com Docker</a>
-
-Para rodar o projeto utilizando o Docker, siga as etapas abaixo:
-
-### Construir os containers do Docker:
-Execute o seguinte comando para construir os containers definidos no arquivo `docker-compose.yml`:
-
-```bash
-docker-compose up --build
-```
-
-### Acesse o aplicativo:
-
-Assim que a compilação for concluída, o aplicativo estará acessível em [http://localhost:3000](http://localhost:3000).
-
-### Pare os contêineres:
-
-Para interromper os contêineres do Docker, execute o seguinte comando:
-
-```bash
-docker-compose down
-```
-
 
 ### Migrações de banco de dados:
 
