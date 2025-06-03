@@ -15,30 +15,28 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
-      <ClerkProvider
-        appearance={{
-          layout: {
-            socialButtonsVariant: "iconButton",
-            logoImageUrl: "/icons/logo.svg",
-          },
-          variables: {
-            colorText: "#C9DDFF",
-            colorPrimary: "#0E78F9",
-            colorBackground: "#1C1F2E",
-            colorInputBackground: "#252A41",
-            colorInputText: "#fff",
-          },
-        }}
-      >
-        <body className={`${inter.className} bg-dark-2`}>
-          <div id="__next">{children}</div>
-        </body>
-      </ClerkProvider>
-    </html>
+    <ClerkProvider
+      appearance={{
+        layout: {
+          socialButtonsVariant: "iconButton",
+          logoImageUrl: "/icons/logo.svg",
+        },
+        variables: {
+          colorText: "#C9DDFF",
+          colorPrimary: "#0E78F9",
+          colorBackground: "#1C1F2E",
+          colorInputBackground: "#252A41",
+          colorInputText: "#fff",
+        },
+      }}
+    >
+      <html lang="en" suppressHydrationWarning>
+        <body className={`${inter.className} bg-dark-2`}>{children}</body>
+      </html>
+    </ClerkProvider>
   );
 }

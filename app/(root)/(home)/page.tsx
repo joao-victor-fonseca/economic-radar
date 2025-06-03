@@ -14,7 +14,7 @@ const Home = () => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      Modal.setAppElement("#__next");
+      Modal.setAppElement("body");
     }
   }, []);
 
