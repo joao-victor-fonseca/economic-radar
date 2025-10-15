@@ -6,47 +6,29 @@ jest.mock("../../lib/prisma", () => {
   return {
     city: {
       create: jest.fn(),
+      findUnique: jest.fn().mockResolvedValue(null),
     },
   };
 });
 
 describe("POST /api/register", () => {
   it("should create a new city and return status 201", async () => {
-    (prisma.city.create as jest.Mock).mockResolvedValue({
-      id: 1,
-      name: "cidade exemplo",
-      city: "cidade exemplo",
-    });
+    (prisma.city.create as jest.Mock).mockResolvedValue({ id: 1, city: "cidade exemplo", uf: "SP" });
 
     const { req, res } = createMocks({
       method: "POST",
       body: {
         city: "Cidade Exemplo",
-        name: "Cidade Exemplo",
-        state: "Estado",
-        country: "País",
+        uf: "SP",
       },
     });
 
     await handler(req, res);
 
     expect(res._getStatusCode()).toBe(201);
-    expect(res._getData()).toEqual(
-      JSON.stringify({
-        id: 1,
-        name: "cidade exemplo",
-        city: "cidade exemplo",
-      })
-    );
+    expect(res._getData()).toEqual(JSON.stringify({ id: 1, city: "cidade exemplo", uf: "SP" }));
 
-    expect(prisma.city.create).toHaveBeenCalledWith({
-      data: {
-        city: "cidade exemplo",
-        name: "Cidade Exemplo",
-        state: "Estado",
-        country: "País",
-      },
-    });
+  expect(prisma.city.create).toHaveBeenCalledWith(expect.objectContaining({ data: expect.objectContaining({ city: "cidade exemplo", uf: "SP" }) }));
   });
 
   it("should return error 500 when creation fails", async () => {
@@ -56,18 +38,14 @@ describe("POST /api/register", () => {
       method: "POST",
       body: {
         city: "Cidade Exemplo",
-        name: "Cidade Exemplo",
-        state: "Estado",
-        country: "País",
+        uf: "SP",
       },
     });
 
     await handler(req, res);
 
     expect(res._getStatusCode()).toBe(500);
-    expect(res._getData()).toEqual(
-      JSON.stringify({ error: "Erro ao salvar a cidade" })
-    );
+    expect(res._getData()).toEqual(JSON.stringify({ error: "Erro ao salvar a cidade" }));
   });
 
   it("should return error 405 for disallowed methods", async () => {
