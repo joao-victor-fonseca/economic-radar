@@ -1,27 +1,23 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import prisma from "../../lib/prisma";
+import type { NextApiHandler } from "next";
+import { withHandler } from "../../src/lib/api/withHandler";
+import { createCitySchema } from "../../src/modules/city/validators/createCity.validator";
+import { CityService } from "../../src/modules/city/services/city.service";
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+const handler: NextApiHandler = async (req, res) => {
   if (req.method === "POST") {
-    const data = req.body;
-
-    if (data.city) {
-      data.city = data.city.trim().toLowerCase();
-    } else {
-      res.status(400).json({ error: "O campo 'city' é obrigatório" });
-      return;
-    }
+    const parsed = createCitySchema.safeParse(req.body);
+    if (!parsed.success) return res.status(400).json({ error: parsed.error.format() });
 
     try {
-      const city = await prisma.city.create({ data });
-      res.status(201).json(city);
-    } catch (error) {
-      res.status(500).json({ error: "Erro ao salvar a cidade" });
+      const city = await CityService.createCity(parsed.data);
+      return res.status(201).json(city);
+    } catch (err: any) {
+      if (err.status === 409) return res.status(409).json({ error: err.message });
+      return res.status(500).json({ error: "Erro ao salvar a cidade" });
     }
-  } else {
-    res.status(405).json({ error: `Method ${req.method} Not Allowed` });
   }
-}
+
+  return res.status(405).json({ error: `Method ${req.method} Not Allowed` });
+};
+
+export default withHandler(handler, ["POST"]);
