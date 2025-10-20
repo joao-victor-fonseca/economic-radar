@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import React, { useState, ChangeEvent, FormEvent } from "react";
-import useAlert from "@/hooks/useAlert";
-import Alert from "@/components/Alert";
-import axios from "axios";
+import React, { useState, ChangeEvent, FormEvent } from 'react';
+import useAlert from '@/hooks/useAlert';
+import Alert from '@/components/Alert';
+import axios from 'axios';
 
 interface FormData {
   city: string;
@@ -26,20 +26,20 @@ interface FormData {
 const Register = () => {
   // Hook useState para armazenar e atualizar os dados do formulário
   const [formData, setFormData] = useState<FormData>({
-    city: "",
-    pib: "",
-    uf: "",
-    mayor: "",
-    population: "",
+    city: '',
+    pib: '',
+    uf: '',
+    mayor: '',
+    population: '',
     areas: [],
-    idh: "",
-    benefits: "",
-    logistics: "",
-    location: "",
-    economicFreedom: "",
-    sector: "",
-    qualification: "",
-    environmentalLicense: "",
+    idh: '',
+    benefits: '',
+    logistics: '',
+    location: '',
+    economicFreedom: '',
+    sector: '',
+    qualification: '',
+    environmentalLicense: '',
   });
 
   // Hook personalizado para gerenciar o estado dos alertas
@@ -47,7 +47,7 @@ const Register = () => {
 
   // Função para lidar com mudanças nos campos do formulário (inputs)
   const handleInputChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
   ) => {
     const { name, value } = e.target; // Captura o nome e valor do campo que foi alterado
     setFormData({ ...formData, [name]: value }); // Atualiza o estado do formData com o novo valor
@@ -59,35 +59,36 @@ const Register = () => {
 
     try {
       // Faz uma requisição POST para a API com os dados do formulário
-      const response = await axios.post("/api/register", formData);
+      const response = await axios.post('/api/register', formData);
       if (response.status === 201) {
         // Exibe uma mensagem de sucesso se o cadastro for concluído
-        showAlert({ text: "City registered successfully 😃", type: "success" });
+        showAlert({ text: 'City registered successfully 😃', type: 'success' });
       }
-    } catch (error) {
+    } catch (err) {
+      console.error(err);
       // Exibe uma mensagem de erro caso algo dê errado
-      showAlert({ text: "Error registering city 😞", type: "danger" });
+      showAlert({ text: 'Error registering city 😞', type: 'danger' });
     }
 
     // Rola a página para o topo após o envio do formulário
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 
     // Reseta os campos do formulário
     setFormData({
-      city: "",
-      pib: "",
-      uf: "",
-      mayor: "",
-      population: "",
+      city: '',
+      pib: '',
+      uf: '',
+      mayor: '',
+      population: '',
       areas: [],
-      idh: "",
-      benefits: "",
-      logistics: "",
-      location: "",
-      economicFreedom: "",
-      sector: "",
-      qualification: "",
-      environmentalLicense: "",
+      idh: '',
+      benefits: '',
+      logistics: '',
+      location: '',
+      economicFreedom: '',
+      sector: '',
+      qualification: '',
+      environmentalLicense: '',
     });
 
     // Esconde o alerta após 3 segundos
@@ -186,9 +187,7 @@ const Register = () => {
 
         {/* Campos de textarea para benefícios, logística, localização, etc. */}
         <div className="col-span-1 md:col-span-2">
-          <label className="block text-sky-1">
-            Benefits offered by the Municipality
-          </label>
+          <label className="block text-sky-1">Benefits offered by the Municipality</label>
           <textarea
             name="benefits"
             value={formData.benefits}

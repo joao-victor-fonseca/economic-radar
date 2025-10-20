@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { useRouter, useParams } from "next/navigation";
+import { useEffect, useState } from 'react';
+import { useParams } from 'next/navigation';
 import {
   ArrowLeftIcon,
   Building,
@@ -15,11 +15,11 @@ import {
   ShieldCheck,
   Award,
   AlertCircle,
-} from "lucide-react";
-import axios from "axios";
-import Card from "@/components/Card";
-import Link from "next/link";
-import Image from "next/image";
+} from 'lucide-react';
+import axios from 'axios';
+import Card from '@/components/Card';
+import Link from 'next/link';
+import Image from 'next/image';
 
 interface CityData {
   id: number;
@@ -40,7 +40,6 @@ interface CityData {
 }
 
 const CityDetails = () => {
-  const router = useRouter();
   const params = useParams();
   const cityParam = params?.city as string;
   const [cityData, setCityData] = useState<CityData | null>(null);
@@ -51,16 +50,15 @@ const CityDetails = () => {
     if (cityParam) {
       const fetchCityData = async () => {
         try {
-          const response = await axios.get(
-            `/api/cities/${encodeURIComponent(cityParam)}`
-          );
+          const response = await axios.get(`/api/cities/${encodeURIComponent(cityParam)}`);
           if (response.data) {
             setCityData(response.data);
           } else {
             setError(`City ${decodeURIComponent(cityParam)} not found`);
           }
-        } catch (error) {
-          setError("Error fetching city data");
+        } catch (err) {
+          console.error(err);
+          setError('Error fetching city data');
         } finally {
           setLoading(false);
         }
@@ -68,7 +66,7 @@ const CityDetails = () => {
 
       fetchCityData();
     } else {
-      setError("City parameter not found in URL");
+      setError('City parameter not found in URL');
       setLoading(false);
     }
   }, [cityParam]);
@@ -76,12 +74,7 @@ const CityDetails = () => {
   if (loading) {
     return (
       <div className="flex-1 flex items-center justify-center">
-        <Image
-          src="/icons/loading-circle.svg"
-          alt="Loading..."
-          width={80}
-          height={80}
-        />
+        <Image src="/icons/loading-circle.svg" alt="Loading..." width={80} height={80} />
       </div>
     );
   }
@@ -131,26 +124,10 @@ const CityDetails = () => {
           <Card title="Benefits" value={cityData.benefits} Icon={Briefcase} />
           <Card title="Logistics" value={cityData.logistics} Icon={Truck} />
           <Card title="Location" value={cityData.location} Icon={MapPin} />
-          <Card
-            title="Economic freedom"
-            value={cityData.economicFreedom}
-            Icon={ShieldCheck}
-          />
-          <Card
-            title="Area of ​​Activity"
-            value={cityData.sector}
-            Icon={Building}
-          />
-          <Card
-            title="Qualification"
-            value={cityData.qualification}
-            Icon={Award}
-          />
-          <Card
-            title="Environmental license"
-            value={cityData.environmentalLicense}
-            Icon={Award}
-          />
+          <Card title="Economic freedom" value={cityData.economicFreedom} Icon={ShieldCheck} />
+          <Card title="Area of ​​Activity" value={cityData.sector} Icon={Building} />
+          <Card title="Qualification" value={cityData.qualification} Icon={Award} />
+          <Card title="Environmental license" value={cityData.environmentalLicense} Icon={Award} />
         </div>
         <div className="mt-8">
           <Link
