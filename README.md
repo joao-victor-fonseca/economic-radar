@@ -54,7 +54,7 @@ cd economic-radar
 ```
 
 
-### Baixar baixar dependências
+### Baixar dependências
 
 ```bash
 npm install
