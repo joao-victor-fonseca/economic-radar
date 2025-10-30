@@ -53,6 +53,14 @@ cd economic-radar
 
 ```
 
+
+### Baixar baixar dependências
+
+```bash
+npm install
+
+```
+
 ### Migrações de banco de dados:
 
 Depois que os contêineres estiverem em execução, pode ser necessário executar migrações do Prisma com o seguinte comando:
