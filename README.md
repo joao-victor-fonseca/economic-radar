@@ -69,6 +69,12 @@ Depois que os contêineres estiverem em execução, pode ser necessário executa
 npx prisma migrate dev
 ```
 
+### Executar projeto local:
+
+```bash
+npm run dev
+```
+
 ## 🎉 Pronto!
 
 É isso! O projeto agora deve estar sendo executado localmente com Docker.
