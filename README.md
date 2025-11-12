@@ -53,12 +53,26 @@ cd economic-radar
 
 ```
 
+
+### Baixar dependências
+
+```bash
+npm install
+
+```
+
 ### Migrações de banco de dados:
 
 Depois que os contêineres estiverem em execução, pode ser necessário executar migrações do Prisma com o seguinte comando:
 
 ```bash
 npx prisma migrate dev
+```
+
+### Executar projeto local:
+
+```bash
+npm run dev
 ```
 
 ## 🎉 Pronto!
